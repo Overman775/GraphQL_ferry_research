@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return HomePage(
-      repository: HomeGraphQLArtemisClient(context.read()),
+      repository: HomeGraphQLClient(context.read()),
     );
   }
 }

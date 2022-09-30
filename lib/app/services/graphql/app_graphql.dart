@@ -7,13 +7,13 @@ import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:gql_exec/gql_exec.dart';
 import 'package:gql_websocket_link/gql_websocket_link.dart';
 
-class AppGraphQLArtemisClient {
+class AppGraphQLClient {
   late final Client client;
 
   late final DioLink _dioLink;
   late final WebSocketLink _socketLink;
 
-  AppGraphQLArtemisClient(Dio dio) {
+  AppGraphQLClient(Dio dio) {
     _dioLink = DioLink("http://$_host:8080/graphql", client: dio);
 
     _socketLink = WebSocketLink(

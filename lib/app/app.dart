@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
         Provider<Dio>(
           create: (_) => AppDio().init(),
         ),
-        Provider<AppGraphQLArtemisClient>(
-          create: (context) => AppGraphQLArtemisClient(context.read()),
+        Provider<AppGraphQLClient>(
+          create: (context) => AppGraphQLClient(context.read()),
         ),
       ],
       child: MaterialApp(

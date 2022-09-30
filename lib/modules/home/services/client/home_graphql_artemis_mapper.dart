@@ -1,4 +1,3 @@
-import 'package:app_artemis_api/app_api.dart';
 import 'package:graphql_test_pos/modules/home/models/account.dart';
 import 'package:graphql_test_pos/modules/home/models/account_subscription.dart';
 import 'package:graphql_test_pos/modules/home/models/card.dart';
