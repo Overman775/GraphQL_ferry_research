@@ -2,7 +2,7 @@ import 'package:graphql_test_pos/modules/home/models/account.dart';
 import 'package:graphql_test_pos/modules/home/models/account_subscription.dart';
 import 'package:graphql_test_pos/modules/home/models/card.dart';
 
-class HomeGraphQLArtemisMapper {
+class HomeGraphQLMapper {
   static Account account(Accounts$Query$Account dto) {
     return Account(
       id: dto.id,
