@@ -12,7 +12,9 @@ dependencies:
   ferry: ^0.11.2+1
   flutter:
     sdk: flutter
+  gql: ^0.14.1-alpha+1661890990239
   gql_dio_link: ^0.2.3
+  gql_exec: ^0.4.2-alpha+1661890990246
   gql_link: ^0.5.0
   gql_websocket_link: ^0.3.3
   meta: ^1.8.0

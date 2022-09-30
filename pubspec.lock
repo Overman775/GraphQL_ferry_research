@@ -124,7 +124,7 @@ packages:
     source: sdk
     version: "0.0.0"
   gql:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: gql
       url: "https://pub.dartlang.org"
@@ -138,7 +138,7 @@ packages:
     source: hosted
     version: "0.2.3"
   gql_exec:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: gql_exec
       url: "https://pub.dartlang.org"
