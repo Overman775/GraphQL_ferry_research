@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               if (accountBalance != null) {
                 return Text('Balance: $accountBalance');
               } else {
-                return const SizedBox.shrink();
+                return const Text('Balance: ');
               }
             },
           ),

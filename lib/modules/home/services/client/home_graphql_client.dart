@@ -15,7 +15,8 @@ class HomeGraphQLClient implements HomeClient {
 
   @override
   Future<List<Account>> fetchAccounts() async {
-    final request = client.request(GAccountsReq());
+    final request = client.request(GAccountsReq((args) => args));
+
     final result = await request.first;
 
     return result.data?.accounts?.map(HomeGraphQLMapper.account).toList() ?? [];
@@ -30,10 +31,12 @@ class HomeGraphQLClient implements HomeClient {
 
   @override
   Future<void> withdraw(String id) async {
-    final request = GwithdrawReq((args) => args
+    final args = GwithdrawReq((args) => args
       ..vars.withdrawal.accountId = id
       ..vars.withdrawal.amount = 100);
 
-    client.request(request);
+    final request = client.request(args);
+
+    await request.first;
   }
 }
