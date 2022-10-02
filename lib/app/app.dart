@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
         Provider<Dio>(
           create: (_) => AppDio().init(),
         ),
-        Provider<AppGraphQLClient>(
-          create: (context) => AppGraphQLClient(context.read()),
+        Provider<Client>(
+          create: (context) => AppGraphQLClient(context.read()).client,
         ),
       ],
       child: MaterialApp(
