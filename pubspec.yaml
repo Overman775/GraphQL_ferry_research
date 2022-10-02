@@ -8,13 +8,15 @@ environment:
   sdk: '>=2.18.1 <3.0.0'
 
 dependencies:
+  app_ferry_api:
+    path: ./packages/app_ferry_api
   dio: ^4.0.6
   ferry: ^0.11.2+1
   flutter:
     sdk: flutter
-  gql: ^0.14.1-alpha+1661890990239
+  gql: ^0.14.0
   gql_dio_link: ^0.2.3
-  gql_exec: ^0.4.2-alpha+1661890990246
+  gql_exec: ^0.4.1
   gql_link: ^0.5.0
   gql_websocket_link: ^0.3.3
   meta: ^1.8.0

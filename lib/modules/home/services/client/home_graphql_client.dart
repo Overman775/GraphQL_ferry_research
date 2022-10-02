@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:app_ferry_api/app_api.dart';
 import 'package:ferry/ferry.dart';
 import 'package:graphql_test_pos/modules/home/models/account.dart';
 
@@ -6,33 +9,31 @@ import 'home_client.dart';
 import 'home_graphql_mapper.dart';
 
 class HomeGraphQLClient implements HomeClient {
-  final Client appGQLClient;
+  final Client client;
 
-  HomeGraphQLClient(this.appGQLClient);
+  HomeGraphQLClient(this.client);
 
   @override
   Future<List<Account>> fetchAccounts() async {
-    final result = await appGQLClient.execute(AccountsQuery());
+    final request = client.request(GAccountsReq());
+    final result = await request.first;
 
-    return result.data?.accounts
-            ?.whereType<Accounts$Query$Account>()
-            .map(HomeGraphQLMapper.account)
-            .toList() ??
-        [];
+    return result.data?.accounts?.map(HomeGraphQLMapper.account).toList() ?? [];
   }
 
   @override
   Stream<AccountSubscription?> streamBalance() {
-    return appGQLClient.socket.stream(AccountBalanceChangedSubscription()).map(
-        (event) => HomeGraphQLMapper.accountSubscription(
+    return client.request(GAccountBalanceChangedReq()).map((event) =>
+        HomeGraphQLMapper.accountSubscription(
             event.data?.accountBalanceChanged));
   }
 
   @override
   Future<void> withdraw(String id) async {
-    final args =
-        WithdrawArguments(withdrawal: Withdrawal(accountId: id, amount: 100));
+    final request = GwithdrawReq((args) => args
+      ..vars.withdrawal.accountId = id
+      ..vars.withdrawal.amount = 100);
 
-    await appGQLClient.execute(WithdrawMutation(variables: args));
+    client.request(request);
   }
 }
