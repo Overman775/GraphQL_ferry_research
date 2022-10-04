@@ -19,11 +19,11 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAccountsVars.serializer)
       ..add(GPaymentLimit.serializer)
       ..add(GPaymentLimitType.serializer)
+      ..add(GWithdrawData.serializer)
+      ..add(GWithdrawData_withdraw.serializer)
+      ..add(GWithdrawReq.serializer)
+      ..add(GWithdrawVars.serializer)
       ..add(GWithdrawal.serializer)
-      ..add(GwithdrawData.serializer)
-      ..add(GwithdrawData_withdraw.serializer)
-      ..add(GwithdrawReq.serializer)
-      ..add(GwithdrawVars.serializer)
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GAccountsData_accounts)]),

@@ -24,14 +24,15 @@ class HomeGraphQLClient implements HomeClient {
 
   @override
   Stream<AccountSubscription?> streamBalance() {
-    return client.request(GAccountBalanceChangedReq()).map((event) =>
-        HomeGraphQLMapper.accountSubscription(
-            event.data?.accountBalanceChanged));
+    final stream = client.request(GAccountBalanceChangedReq());
+
+    return stream.map((event) => HomeGraphQLMapper.accountSubscription(
+        event.data?.accountBalanceChanged));
   }
 
   @override
   Future<void> withdraw(String id) async {
-    final args = GwithdrawReq((args) => args
+    final args = GWithdrawReq((args) => args
       ..vars.withdrawal.accountId = id
       ..vars.withdrawal.amount = 100);
 

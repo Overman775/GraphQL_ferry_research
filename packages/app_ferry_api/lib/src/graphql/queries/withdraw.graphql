@@ -1,0 +1,6 @@
+mutation Withdraw ($withdrawal: Withdrawal) {
+    withdraw (withdrawal: $withdrawal) {
+        id
+        balance
+    }
+}

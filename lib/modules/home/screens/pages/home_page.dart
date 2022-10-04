@@ -46,7 +46,9 @@ class _HomePageState extends State<HomePage> {
             builder: (BuildContext context,
                 AsyncSnapshot<AccountSubscription?> snapshot) {
               final accountBalance = snapshot.data?.balance;
-
+              if (snapshot.hasError) {
+                print(snapshot.error);
+              }
               if (accountBalance != null) {
                 return Text('Balance: $accountBalance');
               } else {
