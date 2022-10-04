@@ -26,7 +26,6 @@ class AppGraphQLClient {
       channelGenerator: _generateWebSocketChannel,
     );
 
-    // final linkRouter = Link.route(_getLink);
     final linkServer = Link.split(
         (request) => _isSubscription(request), _socketLink, _dioLink);
 
@@ -45,16 +44,6 @@ class AppGraphQLClient {
     return WebSocketChannel.connect(Uri.parse('ws://$_host:8080/subscriptions'),
         protocols: ['graphql-ws']);
   }
-
-  // Link _getLink(Request request) {
-  //   final isSubscription = request.operation.document.definitions.any(
-  //     (definition) =>
-  //         definition is OperationDefinitionNode &&
-  //         definition.type == OperationType.subscription,
-  //   );
-
-  //   return isSubscription ? _socketLink : _dioLink;
-  // }
 
   bool _isSubscription(Request request) {
     final definitions = request.operation.document.definitions
