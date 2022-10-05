@@ -35,7 +35,15 @@ class AppGraphQLClient {
       log('socket: $event');
     });
 
-    client = Client(link: link);
+    client = Client(
+      link: link,
+      defaultFetchPolicies: {
+        OperationType.query: FetchPolicy.NoCache,
+        OperationType.mutation: FetchPolicy.NoCache,
+        OperationType.subscription: FetchPolicy.NoCache,
+      },
+      addTypename: false,
+    );
   }
 
   String get _host => Platform.isAndroid ? '10.0.2.2' : 'localhost';
